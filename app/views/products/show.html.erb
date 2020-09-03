@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titre:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Prix:</strong>
+  <%= @product.price %>
+</p>
+
+<%= image_tag(@product.image, style:'width:30%') if @product.image.attached?  %>
+
+
+
+<%= link_to 'Modifier', edit_product_path(@product) %> |
+<%= link_to 'Retour', products_path %>

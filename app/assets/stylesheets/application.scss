@@ -1,0 +1,59 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$navbar-dark-color: #f54a99;
+$navbar-dark-hover-color: white;
+$navbar-dark-active-color: #f54a99;
+
+$theme-colors: (
+  "primary": #f54a99,
+  "secondary": #cacaca,
+  "success": #015668,
+  "info": #0f81c7,
+  "warning": #0de2ea,
+  "danger": #06648c,
+  "light": #ececec,
+  "dark": #222222,
+);
+
+$font-family-sans-serif: "Pacifico";
+$nav-link-font-family-sans-serif: "Pacifico";
+
+@import "bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.footer-text {
+  margin-left: 600px;
+}
+
+.style {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 30vw;
+}
+
+.form-registration {
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.navbar-custom {
+  background-color: #faa8d1;
+}

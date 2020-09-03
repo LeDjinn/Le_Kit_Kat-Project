@@ -1,0 +1,42 @@
+<%= render "layouts/header" %>
+
+<% if current_user %>
+<%= link_to 'Sign out', destroy_user_session_path,:method => :delete %>
+<% else %>
+<%= link_to 'Sign up', new_user_registration_path %>
+<%= link_to 'Sign in', new_user_session_path %>
+<% end %>
+
+<% if current_user && current_user.admin %>
+<table>
+  <thead>
+    <tr>
+      <th >Title</th>
+      <th>Price</th>
+      <th>Picture</th>
+
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td class="col-lg-1"><%= product.title %></td>
+        <td class="col-lg-1"><%= product.price %> €</td>
+        <td class="col-lg-4"><%= image_tag(product.image, style:'width:10%') if product.image.attached?  %></td>
+        <td class="col-lg-2"><%= link_to 'Show', product %></td>
+        <td class="col-lg-2"><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td class="col-lg-2"><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ajouter nouveau produit', new_product_path %>
+<% else %>
+
+Permission denied ! You are not the admin !
+<% end %>

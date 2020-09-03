@@ -1,0 +1,62 @@
+<%= render "layouts/header" %>
+
+<div class="container-fluid main-section">
+    <div class="row">
+        <div class="col-lg-12 pb-2">
+            <h4>Your Shoping Cart</h4>
+        </div>
+        <div class="col-lg-12 pl-3 pt-3">
+            <table class="table table-hover border bg-white">
+                <thead>
+                    <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th style="width:10%;">Quantity</th>
+                    <th>Add</th>
+                    <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @order_items.each do |item| %>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <h3 ><%= item.product.title %></h3>
+                                </div>
+                                <div class="col-lg-2 Product-img">
+                                    <%= image_tag(item.product.image, style:'width:100%') if item.product.image.attached?  %>
+                                </div>  
+                            </div>
+                        </td>
+                        <td><%= item.product.price %> €</td>
+                        <td>
+                            <%= form_for item, remote: true do |f| %>
+                                <%= f.hidden_field :product_id, :value => item.product.id %>
+                                <%= f.number_field :quantity, :value => item.quantity.to_i %>
+                        
+                               <td> <%= f.submit "Add to cart "%> </td>
+                            <% end %>    
+                        </td>
+                        <td><%= link_to "Delete", order_item_path(item), method: :delete, remote: true%></td>
+                </tr>
+                <% end %>
+                <tfoot>
+                <tr >
+                <td><a href="#" class="btn btn-warning text-white"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                <td colspan="2" class="hidden-xs"></td>
+                <td  class="hidden-xs text-center" style="width:10%;">
+                    <div id="card">
+                    <%= render 'cards/card'%>
+                    </div>
+                </td>
+                <td><%= button_to "Payer", new_charge_path, class:"btn btn-primary", :method => :get %></td>
+                </tr>
+            </tfoot> 
+            </br>  
+            </table>
+        </div>
+    </div>
+</div>
+</br>
+<%= render "layouts/footer" %>

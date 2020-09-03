@@ -1,0 +1,18 @@
+<h1>Shops#show</h1>
+<p>Tu me trouveras ici : app/views/shops/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titre:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Prix:</strong>
+  <%= @product.price %>
+</p>
+
+<%= image_tag(@product.image, style:'width:30%') if @product.image.attached?  %>
+
+
+<%= link_to 'Back', root_path %>
